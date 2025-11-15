@@ -4,8 +4,8 @@ WORKDIR /app
 
 COPY target/futbolclub-1.0.0.jar app.jar
 
-EXPOSE 8080
+EXPOSE 8888
 
-ENV PORT=8080
+ENV PORT=8888
 
 ENTRYPOINT ["java", "-jar", "app.jar"]
