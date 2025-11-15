@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Inicio • Fútbol Club</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #1e40af;
+      --secondary-color: #3b82f6;
+      --accent-color: #f59e0b;
+      --gradient-primary: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+    }
+    
+    body {
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    .hero-section {
+      background: var(--gradient-primary);
+      color: white;
+      border-radius: 16px;
+      padding: 2.5rem;
+      margin-bottom: 2.5rem;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+    
+    .feature-card {
+      background: white;
+      border-radius: 16px;
+      padding: 1.5rem;
+      height: 100%;
+      transition: all 0.3s ease;
+      border: none;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    }
+    
+    .feature-card .card-icon {
+      width: 70px;
+      height: 70px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+      background: var(--gradient-primary);
+      color: white;
+      font-size: 1.8rem;
+    }
+    
+    .stats-section {
+      background: white;
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin-top: 2.5rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    
+    .stat-value {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--primary-color);
+    }
+  </style>
+</head>
+<body class="bg-light">
+  <div th:replace="~{fragments/layout :: navbar}"></div>
+
+  <main class="container py-4">
+    <div class="hero-section">
+      <h1 class="display-5 fw-bold">Fútbol Club</h1>
+      <p class="lead">Sistema integral de gestión para clubes, equipos, jugadores y partidos</p>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-3">
+        <a href="/clubes" class="text-decoration-none">
+          <div class="feature-card">
+            <div class="card-icon">
+              <i class="bi bi-shield"></i>
+            </div>
+            <div class="card-title fw-semibold">Clubes</div>
+            <div class="card-description text-muted">
+              Gestiona las organizaciones y sus datos administrativos
+            </div>
+          </div>
+        </a>
+      </div>
+      
+      <div class="col-md-6 col-lg-3">
+        <a href="/equipos" class="text-decoration-none">
+          <div class="feature-card">
+            <div class="card-icon">
+              <i class="bi bi-people"></i>
+            </div>
+            <div class="card-title fw-semibold">Equipos</div>
+            <div class="card-description text-muted">
+              Administra las plantillas y composición de los equipos
+            </div>
+          </div>
+        </a>
+      </div>
+      
+      <div class="col-md-6 col-lg-3">
+        <a href="/jugadores" class="text-decoration-none">
+          <div class="feature-card">
+            <div class="card-icon">
+              <i class="bi bi-person-badge"></i>
+            </div>
+            <div class="card-title fw-semibold">Jugadores</div>
+            <div class="card-description text-muted">
+              Consulta y edita la información de los futbolistas
+            </div>
+          </div>
+        </a>
+      </div>
+      
+      <div class="col-md-6 col-lg-3">
+        <a href="/partidos" class="text-decoration-none">
+          <div class="feature-card">
+            <div class="card-icon">
+              <i class="bi bi-trophy"></i>
+            </div>
+            <div class="card-title fw-semibold">Partidos</div>
+            <div class="card-description text-muted">
+              Registra y consulta resultados de encuentros
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+    
+    <div class="stats-section">
+      <div class="row text-center">
+        <div class="col-md-3 col-6">
+          <div class="stat-value" th:text="${totalClubes}">0</div>
+          <div class="text-muted small">Clubes Activos</div>
+        </div>
+        <div class="col-md-3 col-6">
+          <div class="stat-value" th:text="${totalEquipos}">0</div>
+          <div class="text-muted small">Equipos Registrados</div>
+        </div>
+        <div class="col-md-3 col-6">
+          <div class="stat-value" th:text="${totalJugadores}">0</div>
+          <div class="text-muted small">Jugadores</div>
+        </div>
+        <div class="col-md-3 col-6">
+          <div class="stat-value" th:text="${totalPartidos}">0</div>
+          <div class="text-muted small">Partidos Esta Temporada</div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div th:replace="~{fragments/layout :: footer}"></div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
